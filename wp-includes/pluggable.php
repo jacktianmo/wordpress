@@ -2146,13 +2146,19 @@ function get_avatar( $id_or_email, $size = '96', $default = '', $alt = false ) {
 	if ( !empty($email) )
 		$email_hash = md5( strtolower( trim( $email ) ) );
 
-	if ( is_ssl() ) {
+	/* if ( is_ssl() ) {
 		$host = 'https://secure.gravatar.com';
 	} else {
 		if ( !empty($email) )
 			$host = sprintf( "http://%d.gravatar.com", ( hexdec( $email_hash[0] ) % 2 ) );
 		else
 			$host = 'http://0.gravatar.com';
+	}
+	*/
+    if ( is_ssl() ) {
+		$host = 'https://secure.gravatar.com';
+	} else {
+		$host = 'http://www.gravatar.com';
 	}
 
 	if ( 'mystery' == $default )
